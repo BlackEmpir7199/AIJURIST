@@ -168,19 +168,19 @@ def render_courts_info():
 
     with col4:
        if st.session_state.supreme_court_button_state:
-           show_court_image("assets\_Visualize a di 2.png")
+           show_court_image("assets/_Visualize a di 2.png")
            show_supreme_court_details()
            vert_space = '<div style="padding: 30px 5px;"></div>'
            st.markdown(vert_space,unsafe_allow_html=True)
            st.write("Disclaimer: The information provided about the Supreme Courts is intended for general informational purposes only. It does not constitute legal advice or representation. For specific legal matters, always consult with qualified legal professionals.")
        elif st.session_state.high_court_button_state:
-           show_court_image("assets\_Visualize a di 1.png")
+           show_court_image("assets/_Visualize a di 1.png")
            show_high_courts_list()
            vert_space = '<div style="padding: 30px 5px;"></div>'
            st.markdown(vert_space,unsafe_allow_html=True)
            st.write("Disclaimer: The information presented regarding High Courts is intended to be informative and educational in nature. It should not be construed as legal advice or a substitute for professional legal counsel. Seek advice from qualified legal experts for individualized legal concerns.")
        elif st.session_state.district_court_button_state:
-           show_court_image("assets\small judicial  1.png")
+           show_court_image("assets/small judicial  1.png")
            show_district_courts_list()
            vert_space = '<div style="padding: 30px 5px;"></div>'
            st.markdown(vert_space,unsafe_allow_html=True)
