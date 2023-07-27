@@ -7,3 +7,4 @@ streamlit==1.10.0
 streamlit_option_menu==0.3.6
 tensorflow==2.6.2
 typing-extensions~=3.7.4
+numpy~=1.19.5 
