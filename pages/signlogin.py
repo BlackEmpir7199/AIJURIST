@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 
 # Initialize Deta with your Deta Project Key
-load_dotenv()
+load_dotenv(".env")
 DETA_KEY = os.getenv("DETA_KEY")
 deta = Deta(DETA_KEY)
 users_db = deta.Base("users")
