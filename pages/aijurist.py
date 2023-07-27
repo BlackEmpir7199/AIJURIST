@@ -1,5 +1,4 @@
 import streamlit as st
-import keras
 from deta import Deta
 from predictor import render_predictor_page
 from previous_predictions import render_previous_predictions
