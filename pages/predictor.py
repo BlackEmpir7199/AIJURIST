@@ -6,8 +6,7 @@ import case_info
 from colors import color_bb
 import os
 from dotenv import load_dotenv
-
-
+import random
 
 load_dotenv(".env")
 DETA_KEY = os.getenv("DETA_KEY")
@@ -48,7 +47,7 @@ def get_color_for_percentage(percentage):
     
 def predict_case(case_scenario,petitioner_name,respondent_name,legal_evidence,email):
     # Replace this with your actual machine learning model prediction logic
-    prediction = 0.95
+    prediction = random.uniform(0.5, 0.95)
     prediction_datetime = datetime.datetime.now()
     prediction_datetime_str = prediction_datetime.strftime("%Y-%m-%d %H:%M:%S") 
     case_data = {
