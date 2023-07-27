@@ -4,13 +4,11 @@ import pandas as pd
 from deta import Deta
 import os
 from dotenv import load_dotenv
-import keras
 import datetime
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-import case_info 
 from colors import color_bb
 
 # Load the model with custom_objects specified
@@ -63,7 +61,7 @@ def predict_case(case_scenario, petitioner_name, respondent_name, legal_evidence
     # Use the globally loaded model and tokenizer
     print(case_scenario, petitioner_name, respondent_name, legal_evidence, email)
     model_path = 'model/my_model(test).h5'
-    model = keras.models.load_model(model_path,compile=False)
+    model = load_model(model_path,compile=False)
     df = pd.read_csv('model/justice.csv') 
     df.rename(columns={'Facts': 'facts'}, inplace=True)
     tokenizer=Tokenizer()
