@@ -84,8 +84,8 @@ def render_title(n):
     if(n==1):
         st.markdown(
         f"""<button data-text="Awesome" class="button">
-    <span class="actual-text" style='font-weight:bold'>&nbsp;User Registration&nbsp;</span>
-    <span class="hover-text" aria-hidden="true" style='font-weight:bold'>&nbsp;User Registration&nbsp;</span>
+    <span class="actual-text" style='font-weight:bold'>&nbsp;User Signup&nbsp;</span>
+    <span class="hover-text" aria-hidden="true" style='font-weight:bold'>&nbsp;User Signup&nbsp;</span>
 </button>""",
         unsafe_allow_html=True,
     )
