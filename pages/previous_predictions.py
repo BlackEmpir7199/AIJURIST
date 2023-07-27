@@ -4,7 +4,7 @@ import datetime
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(".env")
 DETA_KEY = os.getenv("DETA_KEY")
 deta = Deta(DETA_KEY)
 cases_db = deta.Base("aijurist")
