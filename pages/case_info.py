@@ -88,7 +88,7 @@ def render_case_info():
         case_name = st.text_area("Enter Case Description:", height=280)
         search_button = st.button("Find Similar Cases")
     with col2:
-        st.image("assets\_Create a neon  1.png", width=370)  
+        st.image("assets/_Create a neon  1.png", width=370)  
     if search_button:
         # Call your AI model or database to find similar cases
         similar_cases = find_similar_cases(case_name)
