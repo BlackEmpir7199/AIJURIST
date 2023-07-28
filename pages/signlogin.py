@@ -233,6 +233,7 @@ def render_login_page():
                         # Register the user and save data to the database
                             register_user(username, email, password)
                             st.success("User registered successfully!")
+                            st.write("Please login with your registed account")
 
         elif selected == "Login":
             vert_space = '<div style="padding: 12px 5px;"></div>'
@@ -261,6 +262,7 @@ def render_login_page():
                             existing_user = existing_users.items[0]
                             if existing_user["password"] == password or st.session_state.email:
                                 st.success("Successfully signed in!")
+                                st.write("You can now Surf with our Navigtor")
                                 st.session_state.email=email
                             else:
                                 st.error("Incorrect password. Please try again.")
