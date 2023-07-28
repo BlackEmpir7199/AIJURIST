@@ -474,8 +474,11 @@ footer {visibility:
         else:
             st.info("PLEASE LOGIN TO ACCESS PREDICTED CASES")
     elif selected_page == "Courts Info":
-        render_courts_info()
-       
+	if email:    
+            render_courts_info()
+	else:
+            st.info("PLEASE LOGIN TO ACCESS COURTS INFO")  		
+		
     render_quote_card()
     if st.session_state.email:
       if selected_page =="Sign Up/Login":
