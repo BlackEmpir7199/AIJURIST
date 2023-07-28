@@ -9,7 +9,7 @@ from streamlit_option_menu import option_menu
 from dotenv import load_dotenv
 import os 
 
-load_dotenv()
+load_dotenv(".env")
 DETA_KEY = os.getenv("DETA_KEY")
 deta = Deta(DETA_KEY)
 users_db = deta.Base("users")
