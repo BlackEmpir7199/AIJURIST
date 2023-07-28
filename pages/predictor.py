@@ -156,5 +156,5 @@ def render_predictor_page(email):
     with  col5:
         vert_space = '<div style="padding: 12px 5px;"></div>'
         st.markdown(vert_space, unsafe_allow_html=True)
-        st.image("assets/_Craft an image 1.png",width=380)
+        st.image("assets/_Craft an image 1.png",width=372)
  
