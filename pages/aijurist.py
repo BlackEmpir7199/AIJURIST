@@ -9,7 +9,7 @@ from streamlit_option_menu import option_menu
 from dotenv import load_dotenv
 import os 
 
-load_dotenv(".env")
+load_dotenv()
 DETA_KEY = os.getenv("DETA_KEY")
 deta = Deta(DETA_KEY)
 users_db = deta.Base("users")
@@ -474,11 +474,11 @@ footer {visibility:
         else:
             st.info("PLEASE LOGIN TO ACCESS PREDICTED CASES")
     elif selected_page == "Courts Info":
-	if email:    
-            render_courts_info()
-	else:
-            st.info("PLEASE LOGIN TO ACCESS COURTS INFO")  		
-		
+        if email:
+          render_courts_info()
+        else:
+          st.info("PLEASE LOGIN TO ACCESS COURTS INFO")  
+       
     render_quote_card()
     if st.session_state.email:
       if selected_page =="Sign Up/Login":
