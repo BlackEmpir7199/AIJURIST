@@ -164,7 +164,7 @@ def render_courts_info():
         with col5:
            vert_space = '<div style="padding: 40px 5px;"></div>'
            st.markdown(vert_space,unsafe_allow_html=True)
-           st.image(court_image,width=435)
+           st.image(court_image,width=385)
 
     with col4:
        if st.session_state.supreme_court_button_state:
