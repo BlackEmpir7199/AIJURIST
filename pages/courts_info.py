@@ -8,8 +8,8 @@ from colors import color_bb
 
 def render_title():
     st.markdown("""<button class="button">
-  <span class="button-text" style='font-weight:bold'>&nbsp;Courts Information&nbsp</span>
-  <span class="hover-text" aria-hidden="true" style='font-weight:bold'>&nbsp;Courts Information&nbsp</span>
+  <span class="button-text" style='font-weight:bold'>&nbsp;Courts Info&nbsp</span>
+  <span class="hover-text" aria-hidden="true" style='font-weight:bold'>&nbsp;Courts Info&nbsp</span>
 </button>
 """,
         unsafe_allow_html=True,
