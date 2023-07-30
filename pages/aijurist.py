@@ -305,7 +305,7 @@ def main():
     st.set_page_config(
         page_title="AI Jurist Dashboard",
         layout="wide",
-        initial_sidebar_state="expanded",
+        initial_sidebar_state="auto",
         page_icon="🏛️",  # Replace with an appropriate icon representing your app
     )
     custom_css = """
