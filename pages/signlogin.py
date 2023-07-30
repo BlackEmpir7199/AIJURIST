@@ -173,7 +173,7 @@ def register_user(username, email, password):
 def render_login_page():
     col1,col2,col3 = st.columns([0.22,0.3,0.5])
     with col2:
-        st.image("assets/ai-jurist250.png")
+        st.image("assets/ai-jurist250.png",width=250)
     with col3:
         writer()
 
