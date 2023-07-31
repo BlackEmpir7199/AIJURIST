@@ -10,10 +10,13 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 import case_info 
 from colors import color_bb
 
-# Load the model with custom_objects specified
+import os
+from dotenv import load_dotenv
 
 
-DETA_KEY = "d0dekdqeqph_6oBmpnKZF7poesVLZeANJQ7hZvtAsVbM"
+
+load_dotenv(".env")
+DETA_KEY = os.getenv("DETA_KEY")
 deta = Deta(DETA_KEY)
 cases_db = deta.Base("aijurist")
 df = pd.read_csv('model/justice.csv')
