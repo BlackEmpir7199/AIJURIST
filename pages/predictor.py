@@ -2,7 +2,6 @@ import streamlit as st
 import time
 import pandas as pd
 from deta import Deta
-import keras
 import datetime
 import tensorflow as tf
 from tensorflow.keras.models import load_model
