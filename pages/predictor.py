@@ -1,17 +1,28 @@
 import streamlit as st
 import time
+import pandas as pd
 from deta import Deta
+import keras
 import datetime
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 import case_info 
 from colors import color_bb
-import os
-from dotenv import load_dotenv
-import random
 
-load_dotenv(".env")
-DETA_KEY = os.getenv("DETA_KEY")
+# Load the model with custom_objects specified
+
+
+DETA_KEY = "d0dekdqeqph_6oBmpnKZF7poesVLZeANJQ7hZvtAsVbM"
 deta = Deta(DETA_KEY)
 cases_db = deta.Base("aijurist")
+df = pd.read_csv('model/justice.csv')
+# Load the tokenizer
+tokenizer=Tokenizer()
+tokenizer.fit_on_texts(df["facts"])
+# You need to load the relevant data for the tokenizer to work correctly.
+# Replace "df['facts']" with the appropriate dataset that contains text data.
 
 def scrollDown():
    scroll= '''
@@ -45,11 +56,40 @@ def get_color_for_percentage(percentage):
     else:
         return "#32CD32"
     
-def predict_case(case_scenario,petitioner_name,respondent_name,legal_evidence,email):
+def predict_case(case_scenario, petitioner_name, respondent_name, legal_evidence, email):
+    # Use the globally loaded model and tokenizer
+    print(case_scenario, petitioner_name, respondent_name, legal_evidence, email)
+    model_path = 'model/my_model(test).h5'
+    model = load_model(model_path,compile=False)
+
     # Replace this with your actual machine learning model prediction logic
-    prediction = random.uniform(0.5, 0.95)
+    max_sequence_length_facts = 1000
+    max_sequence_length_party = 100
+
+    # Preprocess the input data for each input layer
+    input_text_facts = f"{case_scenario} {legal_evidence}"
+    input_sequence_facts = tokenizer.texts_to_sequences([input_text_facts])
+    input_sequence_facts = pad_sequences(input_sequence_facts, maxlen=max_sequence_length_facts, padding="post")
+    input_tensor_facts = tf.convert_to_tensor(input_sequence_facts)
+
+    input_text_party = f"{petitioner_name} {respondent_name}"
+    input_sequence_party = tokenizer.texts_to_sequences([input_text_party])
+    input_sequence_first_party = pad_sequences(input_sequence_party, maxlen=max_sequence_length_party, padding="post")
+    input_sequence_second_party = pad_sequences(input_sequence_party, maxlen=max_sequence_length_party, padding="post")
+    input_tensor_first_party = tf.convert_to_tensor(input_sequence_first_party)
+    input_tensor_second_party = tf.convert_to_tensor(input_sequence_second_party)
+
+    # Make predictions with time measurement
+    start_time = time.time()
+    predictions = model.predict([input_tensor_facts, input_tensor_first_party, input_tensor_second_party])
+    end_time = time.time()
+    prediction_time = end_time - start_time
+
+    # Get the win probability
+    prediction = predictions[0, 1]
+    prediction = prediction.item()
     prediction_datetime = datetime.datetime.now()
-    prediction_datetime_str = prediction_datetime.strftime("%Y-%m-%d %H:%M:%S") 
+    prediction_datetime_str = prediction_datetime.strftime("%Y-%m-%d %H:%M:%S")
     case_data = {
         "case_scenario": case_scenario,
         "petitioner_name": petitioner_name,
@@ -57,14 +97,16 @@ def predict_case(case_scenario,petitioner_name,respondent_name,legal_evidence,em
         "legal_evidence": legal_evidence,
         "prediction": prediction,
         "prediction_datetime": prediction_datetime_str,
-        "email":email
+        "email": email
     }
     cases_db.put(case_data)
+
+    # Display the progress bar with the actual prediction time
     progress_bar = st.progress(0)
-    text_placeholder = st.empty()   
+    text_placeholder = st.empty()
     for i in range(101):
         progress_bar.progress(i)
-        time.sleep(0.05)
+        time.sleep(prediction_time / 100)  # Adjust the sleep time based on the prediction time
         text_placeholder.write(f"Progress: {i}%")
     return prediction
 
@@ -156,5 +198,4 @@ def render_predictor_page(email):
     with  col5:
         vert_space = '<div style="padding: 12px 5px;"></div>'
         st.markdown(vert_space, unsafe_allow_html=True)
-        st.image("assets/_Craft an image 1.png",width=372)
- 
+        st.image("assets\_Craft an image 1.png",width=372)
