@@ -284,7 +284,7 @@ def render_login_page():
                             with st.spinner("Sending welcome email..  This may take few seconds"):
                                 if send_welcome_email(email):
                                     register_user(username, email, password)
-                                    st.info("Successfully Signed up and Welcome email is sent!😊")
+                                    st.success("Successfully Signed up and Welcome email is sent!😊")
                                 else:
                                     st.info("Error while sending welcome email, Please provide an authenticated email.🥹")
 
