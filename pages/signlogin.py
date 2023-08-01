@@ -5,7 +5,9 @@ from deta import Deta
 from password_strength import PasswordPolicy
 from email_validator import validate_email, EmailNotValidError
 from dotenv import load_dotenv
-
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
 # Initialize Deta with your Deta Project Key
@@ -155,10 +157,61 @@ def is_valid_email(email):
     except EmailNotValidError as e:
         return False
 
+
+def send_welcome_email(email):
+    # Sender's email details
+    sender_email = os.getenv("sender_email")  # Replace with your email address
+    sender_password = os.getenv("sender_password") # Replace with your email password
+
+    # Subject and body of the email
+    subject = "Welcome to AIJurist!"
+    body = f"""Dear User,
+
+Thank you for registering with AIJurist! We are thrilled to have you as part of our community.
+
+AIJurist is a powerful tool that allows you to predict, search, analyze, and learn with ease. We are constantly adding new features and improvements to enhance your experience.
+
+With AIJurist, you can make informed decisions and get valuable insights from data.
+
+If you have any questions, suggestions, or feedback, feel free to reach out to our support team at Aijuristofficial@outlook.com.
+
+Once again, welcome to AIJurist, and we hope you have a fantastic experience!
+
+Best regards,
+The AIJurist Team
+"""
+
+    # Send the email
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = email
+        msg['Subject'] = subject
+        msg.attach(MIMEText(body, 'plain'))
+        server = smtplib.SMTP('smtp-mail.outlook.com', 587)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.sendmail(sender_email, email, msg.as_string())
+        server.quit()
+        return True
+    except Exception as e:
+        return False
+
+
 def check_password_strength(password):
     # Check if the password meets the defined criteria
-    result = password_policy.test(password)
-    return result
+    errors = []
+
+    if len(password) < 8:
+        errors.append("Password should be at least 8 characters long.")
+    if not any(char.isupper() for char in password):
+        errors.append("Password should contain at least 1 uppercase letter.")
+    if not any(char.isdigit() for char in password):
+        errors.append("Password should contain at least 1 digit.")
+    if not any(char in "!@#$%^&*()-_=+[]{}|;:'\",.<>/?`~" for char in password):
+        errors.append("Password should contain at least 1 special character.")
+
+    return "\n".join(errors)
 
 def check_email_availability(email):
     # Check if the email is already registered in the database
@@ -219,21 +272,21 @@ def render_login_page():
                         st.error("Please enter a password.")
                     else:
                     # Check password strength
-                        result = check_password_strength(password)
-                        if not result:
-                            st.warning("Password strength is weak. Should be at least 8 characters long and include at least 1 uppercase letter, 1 digit, and 1 special character.")
-                            suggestions = password_policy.test(password, return_suggestions=True)
-                            for suggestion in suggestions:
-                                st.warning(f"- {suggestion}")
+                        error_messages = check_password_strength(password)
+                        if error_messages:
+                            st.warning(error_messages)
                         elif password != confirm_password:
                             st.error("Passwords do not match.")
                         elif not check_email_availability(email):
                             st.error("Gmail ID is already registered. Please use a different Gmail ID.")
-                        else:
+                        else:   
                         # Register the user and save data to the database
-                            register_user(username, email, password)
-                            st.success("User registered successfully!")
-                            st.write("Please login with your registed account")
+                            with st.spinner("Sending welcome email..  This may take few seconds"):
+                                if send_welcome_email(email):
+                                    register_user(username, email, password)
+                                    st.info("Successfully Signed up and Welcome email is sent!😊")
+                                else:
+                                    st.info("Error while sending welcome email, Please provide an authenticated email.🥹")
 
         elif selected == "Login":
             vert_space = '<div style="padding: 12px 5px;"></div>'
@@ -262,7 +315,7 @@ def render_login_page():
                             existing_user = existing_users.items[0]
                             if existing_user["password"] == password or st.session_state.email:
                                 st.success("Successfully signed in!")
-                                st.write("You can now Surf with our Navigtor")
+                                st.write("You can now surf with our Navigtor🏄‍♂️")
                                 st.session_state.email=email
                             else:
                                 st.error("Incorrect password. Please try again.")
