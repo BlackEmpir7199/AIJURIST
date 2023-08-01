@@ -316,7 +316,8 @@ body {
     font-family: monospace;
     layout:wide;
 }
-
+[data-testid="stToolbar"] {visibility: 
+            hidden !important;}
 footer {visibility: 
             hidden !important;}
 .stButton {
