@@ -171,7 +171,10 @@ Thank you for registering with AIJurist! We are thrilled to have you as part of 
 
 AIJurist is a powerful tool that allows you to predict, search, analyze, and learn with ease. We are constantly adding new features and improvements to enhance your experience.
 
-With AIJurist, you can make informed decisions and get valuable insights from data.
+👉 Experience accurate legal case predictions powered by cutting-edge AI technology.
+👉 Make informed decisions based on data-backed insights for your legal matters.
+👉 Accessible interface for both legal professionals and newcomers.
+👉 Remember, AIJurist's predictions complement, not replace, professional legal advice.
 
 If you have any questions, suggestions, or feedback, feel free to reach out to our support team at Aijuristofficial@outlook.com.
 
