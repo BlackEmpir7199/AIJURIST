@@ -230,7 +230,7 @@ def render_login_page():
     col1,col2,col3 = st.columns([0.6,0.2,0.5])
     with col2:
         st.markdown(
-            """<p style='font-size: 34px; font-weight: 900;'>
+            """<p style='font-size: 36px; font-weight: 900;'>
             <span style='color: #250fff;'>AIJ</span>urist
             </p>""",
             unsafe_allow_html=True)
