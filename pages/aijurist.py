@@ -432,8 +432,8 @@ footer {visibility:
         default_index=0,
         styles={
             
-            "nav-link": {"--hover-color": "#37c4ff"},
-            "nav-link-selected": {"background-color": "#37c4ff"}}
+            "nav-link": {"--hover-color": "#205fff"},
+            "nav-link-selected": {"background-color": "#205fff"}}
     )
 
     # Create a dictionary of page names and corresponding functions
