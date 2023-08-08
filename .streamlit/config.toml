@@ -4,7 +4,7 @@ favicon = "path/to/your/favicon.ico"
 theme = "custom"
 
 [theme]
-primaryColor = "#37c4ff"  # Magenta
+primaryColor = "#205fff"  # Magenta
 backgroundColor = "#000000"  # Dark gray background
 secondaryBackgroundColor = "#141414"  # Slightly lighter gray for secondary background
 textColor = "#FFFFFF"  # White text color
