@@ -229,7 +229,7 @@ def register_user(username, email, password):
 def render_login_page():
     col1,col2,col3 = st.columns([0.22,0.3,0.5])
     with col2:
-        st.image("assets/ai-jurist250.png",width=250)
+        st.header("AI Jurist")
     with col3:
         writer()
 
@@ -238,7 +238,7 @@ def render_login_page():
     
     # Icons for the menu options
     icons = ["person-add", "person-fill"]
-    col4,col5,col6 = st.columns([0.6,2.8,0.6])
+    col4,col5,col6 = st.columns([0.4,3,0.4])
     with col5:
         selected = option_menu(
         menu_title=None,
