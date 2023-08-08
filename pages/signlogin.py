@@ -227,11 +227,11 @@ def register_user(username, email, password):
     users_db.put(user_data)
 
 def render_login_page():
-    col1,col2,col3 = st.columns([0.6,0.25,0.5])
+    col1,col2,col3 = st.columns([0.6,0.2,0.5])
     with col2:
         st.markdown(
-            """<p style='font-size: 30px; font-weight: 900;'>
-            <span style='color: #250fff;'>AI J</span>urist
+            """<p style='font-size: 34px; font-weight: 900;'>
+            <span style='color: #250fff;'>AIJ</span>urist
             </p>""",
             unsafe_allow_html=True)
     with col3:
