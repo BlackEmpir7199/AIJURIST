@@ -90,7 +90,7 @@ def render_courts_info():
 .button {
   --border-right: 6px;
   --text-stroke-color: rgba(255,255,255,0.6);
-  --animation-color:#37c4ff;
+  --animation-color:#205fff;
   --fs-size: 2em;
   letter-spacing: 3px;
   text-decoration: none;
