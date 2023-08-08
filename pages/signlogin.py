@@ -238,7 +238,7 @@ def render_login_page():
     
     # Icons for the menu options
     icons = ["person-add", "person-fill"]
-    col4,col5,col6 = st.columns([0.4,3,0.4])
+    col4,col5,col6 = st.columns([0.38,3.4,0.4])
     with col5:
         selected = option_menu(
         menu_title=None,
