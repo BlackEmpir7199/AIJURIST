@@ -29,7 +29,7 @@ def writer():
     text = """<h1 class="changing-text">
         You can
         <div class="texts-container">
-            <span style="color: #37c4ff;">Predict<br/>
+            <span style="color: #205fff;">Predict<br/>
                                       Search<br/>
                                      Analyse<br/>
                                      Learn</span>
@@ -114,7 +114,7 @@ def render_title(n):
 .button {
   --border-right: 6px;
   --text-stroke-color: rgba(255,255,255,0.6);
-  --animation-color:#37c4ff;
+  --animation-color:#205fff;
   --fs-size: 2em;
   letter-spacing: 3px;
   text-decoration: none;
@@ -247,8 +247,8 @@ def render_login_page():
         orientation="horizontal",
         default_index=0,
         styles={
-            "nav-link": {"--hover-color": "#37c4ff"},
-            "nav-link-selected": {"background-color": "#37c4ff"}
+            "nav-link": {"--hover-color": "#205fff"},
+            "nav-link-selected": {"background-color": "#205fff"}
         }
     )
 
