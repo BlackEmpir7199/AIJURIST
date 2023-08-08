@@ -303,10 +303,10 @@ def render_run_hello():
 
 def main():
     st.set_page_config(
-        page_title="AI Jurist Dashboard",
+        page_title="AI Jurist - Your Trusted Legal Predictor/Adivcer",
         layout="wide",
         initial_sidebar_state="auto",
-        page_icon="🏛️",  # Replace with an appropriate icon representing your app
+        page_icon="assets/ai-juris-website-favicon-color.png",  # Replace with an appropriate icon representing your app
     )
     custom_css = """
 <style>
