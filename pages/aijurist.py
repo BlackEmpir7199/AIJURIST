@@ -49,7 +49,7 @@ def status_shower(email,username,status):
     #btn-message {
   --text-color: rgb(255, 255, 255);
   --bg-color-sup: #5e5e5e;
-  --bg-color: #2b2b2b;
+  --bg-color: #000000;
   --bg-hover-color: #161616;
   --online-status: {online_status};
   --font-size: 16px;
