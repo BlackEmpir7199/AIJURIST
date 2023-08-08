@@ -227,13 +227,9 @@ def register_user(username, email, password):
     users_db.put(user_data)
 
 def render_login_page():
-    col1,col2,col3 = st.columns([0.8,0.1,0.5])
+    col1,col2,col3 = st.columns([1.0,0.4,0.5])
     with col2:
-        st.markdown(
-            """<p style='font-size: 36px; font-weight: 900;'>
-            <span style='color: #250fff;'>AIJ</span>urist
-            </p>""",
-            unsafe_allow_html=True)
+        st.image("assets/ai-juris-low-resolution-logo-color-on-transparent-background (1).png")
     with col3:
         writer()
 
