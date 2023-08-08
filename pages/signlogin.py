@@ -229,7 +229,9 @@ def register_user(username, email, password):
 def render_login_page():
     col1,col2,col3 = st.columns([0.16,0.3,0.5])
     with col2:
-        st.markdown("<p style='font-size: 20px;'>AI Jurist</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 28px; font-weight: bold;'>"
+            "<span style='color: #250fff;'>AI J</span>urist</p>",
+            unsafe_allow_html=True)
     with col3:
         writer()
 
