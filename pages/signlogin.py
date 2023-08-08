@@ -227,7 +227,7 @@ def register_user(username, email, password):
     users_db.put(user_data)
 
 def render_login_page():
-    col1,col2,col3 = st.columns([0.18,0.5,0.5])
+    col1,col2,col3 = st.columns([0.9,0.5,0.5])
     with col2:
         st.image("assets/ai-juris-low-resolution-logo-color-on-transparent-background (1).png")
     with col3:
