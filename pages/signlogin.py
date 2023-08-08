@@ -227,7 +227,7 @@ def register_user(username, email, password):
     users_db.put(user_data)
 
 def render_login_page():
-    col1,col2,col3 = st.columns([0.22,0.2,0.5])
+    col1,col2,col3 = st.columns([0.16,0.3,0.5])
     with col2:
         st.header("AI Jurist")
     with col3:
