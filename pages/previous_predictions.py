@@ -98,6 +98,7 @@ def render_previous_predictions(email):
                     st.success("Case successfully deleted.")
     # Add content for the previous predictions page here
     if st.button("Delete All"):
-        for case in previous_cases_response.items: 
-            delete_case(case["key"])
-        st.success("All cases successfully deleted.")
+        with st.spinner("Deleting..."):
+            for case in previous_cases_response.items: 
+                delete_case(case["key"])
+            st.success("All cases successfully deleted.")
