@@ -47,7 +47,7 @@ def get_color_for_percentage(percentage):
     
 def predict_case(case_scenario,petitioner_name,respondent_name,legal_evidence,email):
     # Replace this with your actual machine learning model prediction logic
-    prediction = 0.4
+    prediction = random.uniform(0.50,0.92)
     prediction_datetime = datetime.datetime.now()
     prediction_datetime_str = prediction_datetime.strftime("%Y-%m-%d %H:%M:%S") 
     case_data = {
